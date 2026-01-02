@@ -1,12 +1,12 @@
 import requests
 import os
 from dotenv import load_dotenv
-load_dotenv
+load_dotenv()
 
 apiKey = os.getenv("API_KEY")
 
 def get_physics_quote(topic):
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key={apiKey}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key={apiKey}"
 
     payload = {
         "contents": [{
@@ -19,7 +19,7 @@ def get_physics_quote(topic):
     if response.status_code == 200:
         data = response.json()
         quote = data['candidates'][0]['content']['parts'][0]['text']
-        print(f"\nAiPhysics Quote:\n{quote}")
+        print(f"\nAI Physics Quote:\n{quote}")
     else:
         print(f"Error: {response.status_code}")
 
